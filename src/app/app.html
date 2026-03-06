@@ -1,3 +1,27 @@
-<app-navbar></app-navbar>
+<div class="flex flex-col min-h-screen">
+  <app-navbar></app-navbar>
 
-<router-outlet></router-outlet>
+  <main class="flex-grow">
+    <router-outlet></router-outlet>
+  </main>
+
+ <footer class="w-full bg-slate-900 text-slate-200 border-t border-slate-800 p-10">
+  <div class="flex flex-col items-center justify-center w-full text-center">
+
+    <div class="flex justify-center gap-4 mb-4">
+      <i class="fas fa-ghost text-3xl text-primary animate-bounce"></i>
+      <i class="fas fa-calculator text-3xl text-secondary"></i>
+    </div>
+
+    <div class="space-y-1">
+      <p class="font-bold text-xl tracking-tight">
+        Sabanas Helper <span class="text-primary">v1.0</span>
+      </p>
+      <p class="text-slate-400">
+        Copyright © 2026 Developed by Nur - Script By Midooos
+      </p>
+    </div>
+
+  </div>
+</footer>
+</div>
