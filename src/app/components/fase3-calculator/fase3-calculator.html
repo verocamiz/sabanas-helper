@@ -1,0 +1,31 @@
+<h2>Calculadora Fase 3</h2>
+
+<div>
+  <label>Estado del tótem:</label>
+  <select [(ngModel)]="estadoPanda">
+    <option *ngFor="let e of estados" [value]="e">{{e}}</option>
+  </select>
+</div>
+
+<div>
+  <label>Posición del panda:</label>
+  <select [(ngModel)]="posPanda">
+    <option *ngFor="let n of [1,2,3,4,5,6]" [value]="n">{{n}}</option>
+  </select>
+</div>
+
+<br>
+<button (click)="calcular()">Calcular</button>
+<hr>
+
+<div *ngFor="let r of resultados">
+  <h4>Aliado {{r.aliado}}</h4>
+  <p>Estado enemigo: {{r.estadoEnemigo}}</p>
+  <p>Estado necesario: {{r.estadoNecesario}}</p>
+  <p>Totem ideal: {{r.totemIdeal}}</p>
+</div>
+
+<hr>
+<div *ngIf="estadoBoss">
+  <h3>Boss golpe final: {{estadoBoss}}</h3>
+</div>
