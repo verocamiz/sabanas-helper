@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { TotemService, Estado } from '../../services/totem';
+import { FormatFase3Pipe } from '../../pipes/format-maldito-pipe';
 
 @Component({
   selector: 'app-fase3-calculator',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule,FormatFase3Pipe],
   templateUrl: './fase3-calculator.html'
 })
 export class Fase3CalculatorComponent {

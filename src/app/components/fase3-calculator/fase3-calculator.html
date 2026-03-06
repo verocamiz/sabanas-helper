@@ -65,17 +65,7 @@
 </div>
 
 
-<!-- <div *ngFor="let r of resultados">
-  <h4>Aliado {{r.aliado}}</h4>
-  <p>Estado enemigo: {{r.estadoEnemigo}}</p>
-  <p>Estado necesario: {{r.estadoNecesario}}</p>
-  <p>Totem ideal: {{r.totemIdeal}}</p>
-</div>
 
-<hr>
-<div *ngIf="estadoBoss">
-  <h3>Boss golpe final: {{estadoBoss}}</h3>
-</div> -->
 
 <div class="flex justify-center p-4 w-full">
 <div *ngIf="resultados.length > 0" class="card w-full max-w-md bg-base-100 shadow-xl border border-base-200 bg-violet-50 ">
@@ -95,7 +85,7 @@
           <div>
             <p class="text-[10px] uppercase font-bold text-slate-500 leading-none">Jugador {{r.aliado}}</p>
             <p class="text-lg font-black leading-tight" [ngClass]="getEstilo(r.totemIdeal).css">
-              {{r.totemIdeal | titlecase}}
+              {{r.totemIdeal | formatFase3 | titlecase}}
             </p>
           </div>
         </div>
@@ -117,7 +107,7 @@
       <div class="flex-1">
         <p class="text-xs font-bold text-slate-400 uppercase">El boss ultea con elemento: </p>
         <p class= "font-medium">
-          <span class="font-black" [ngClass]="getEstilo(estadoBoss).css">{{estadoBoss |titlecase}}
+          <span class="font-black" [ngClass]="getEstilo(estadoBoss).css">{{estadoBoss  | formatFase3 |titlecase}}
           </span>
         </p>
       </div>
