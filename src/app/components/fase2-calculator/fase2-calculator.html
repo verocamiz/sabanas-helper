@@ -1,7 +1,7 @@
 <!-- src/app/pages/fase2/fase2-calculator.component.html -->
 
 
-<div>
+<!-- <div>
   <label>Estado del boss:</label>
   <select [(ngModel)]="estadoPanda">
     <option *ngFor="let e of estados" [value]="e">{{e}}</option>
@@ -16,7 +16,55 @@
 </div>
 
 <br>
- <button class="btn btn-primary" (click)="calcular()">Calcular</button>
+ <button class="btn btn-primary" (click)="calcular()">Calcular</button> -->
+
+ <div class="bg-violet-50 p-6 rounded-2xl shadow-inner mb-8">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+    <div class="form-control w-full">
+      <label class="label">
+        <span class="label-text font-bold text-slate-700 flex items-center gap-2">
+          <i class="fa-solid fa-dragon text-primary"></i> Estado del Boss
+        </span>
+      </label>
+      <select
+        [(ngModel)]="estadoPanda"
+        class="select select-bordered w-full bg-white transition-all focus:ring-2 focus:ring-primary/20">
+        <option disabled selected value="">Selecciona elemento...</option>
+        <option *ngFor="let e of estados" [value]="e">{{e}}</option>
+      </select>
+      <label class="label">
+        <span class="label-text-alt text-slate-500 italic">El elemento actual del boss</span>
+      </label>
+    </div>
+
+    <div class="form-control w-full">
+      <label class="label">
+        <span class="label-text font-bold text-slate-700 flex items-center gap-2">
+          <i class="fa-solid fa-arrows-up-down-left-right text-primary"></i> Posición del Jugador
+        </span>
+      </label>
+      <select
+        [(ngModel)]="posPanda" (ngModelChange)="posPanda = +$event"
+        class="select select-bordered  w-full bg-white transition-all focus:ring-2 focus:ring-primary/20">
+        <option *ngFor="let n of [1,2,3,4,5,6]" [value]="n">Turno #{{n}}</option>
+      </select>
+      <label class="label">
+        <span class="label-text-alt text-slate-500 italic">Posición del jugador</span>
+      </label>
+    </div>
+
+  </div>
+
+  <div class="mt-8 flex justify-center">
+    <button
+      class="btn btn-primary btn-wide text-lg shadow-lg hover:scale-105 active:scale-95 transition-all gap-3"
+      (click)="calcular()">
+      <i class="fa-solid fa-gears"></i>
+      Calcular
+    </button>
+  </div>
+</div>
 
 
 <!-- <div *ngFor="let r of resultados">
