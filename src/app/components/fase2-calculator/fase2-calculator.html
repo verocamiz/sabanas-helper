@@ -24,14 +24,14 @@
     <div class="form-control w-full">
       <label class="label">
         <span class="label-text font-bold text-slate-700 flex items-center gap-2">
-          <i class="fa-solid fa-dragon text-primary"></i> Estado del Boss
+         Estado del Boss
         </span>
       </label>
       <select
         [(ngModel)]="estadoPanda"
         class="select select-bordered w-full bg-white transition-all focus:ring-2 focus:ring-primary/20">
         <option disabled selected value="">Selecciona elemento...</option>
-        <option *ngFor="let e of estados" [value]="e">{{e}}</option>
+        <option *ngFor="let e of estados" [value]="e">{{e | titlecase}}</option>
       </select>
       <label class="label">
         <span class="label-text-alt text-slate-500 italic">El elemento actual del boss</span>
@@ -49,9 +49,7 @@
         class="select select-bordered  w-full bg-white transition-all focus:ring-2 focus:ring-primary/20">
         <option *ngFor="let n of [1,2,3,4,5,6]" [value]="n">Turno #{{n}}</option>
       </select>
-      <label class="label">
-        <span class="label-text-alt text-slate-500 italic">Posición del jugador</span>
-      </label>
+
     </div>
 
   </div>
@@ -79,23 +77,56 @@
   <h3>Boss golpe final: {{estadoBoss}}</h3>
 </div> -->
 
+<div class="flex justify-center p-4 w-full">
+<div *ngIf="resultados.length > 0" class="card w-full max-w-md bg-base-100 shadow-xl border border-base-200 bg-violet-50 ">
+  <div class="card-body p-5">
 
-<div *ngIf="resultados.length > 0" class="card w-96 bg-base-100 shadow-sm ">
-  <div class="card-body">
-    <div class="flex justify-between">
-      <h2 class="text-xl font-bold">Ubicación por elementos:</h2>
+    <h2 class="text-xl  flex items-center gap-2 mb-4 font-bold">
+      <i class="fas fa-scroll"></i>
+      Ubicación por Elementos
+    </h2>
+
+    <div class="flex flex-col gap-3">
+      <div *ngFor="let r of resultados"
+           class="flex items-center justify-between p-3 rounded-r-xl border-l-8 shadow-sm transition-all hover:bg-white"
+           [ngClass]="[getEstilo(r.totemIdeal).bg, getEstilo(r.totemIdeal).border]">
+
+        <div class="flex items-center gap-3">
+          <div>
+            <p class="text-[10px] uppercase font-bold text-slate-500 leading-none">Jugador {{r.aliado}}</p>
+            <p class="text-lg font-black leading-tight" [ngClass]="getEstilo(r.totemIdeal).css">
+              {{r.totemIdeal | titlecase}}
+            </p>
+          </div>
+        </div>
+
+        <div class="text-2xl opacity-80" [ngClass]="getEstilo(r.totemIdeal).css">
+          <i [class]="getEstilo(r.totemIdeal).icon"></i>
+        </div>
+      </div>
     </div>
-    <ul class="mt-6 flex flex-col gap-2 text-xs">
-      <li *ngFor="let r of resultados">
-        <i class="fas fa-user mr-2"></i>
-        <span class="text-lg"> Jugador {{r.aliado}}: {{r.totemIdeal}}</span>
-      </li>
 
-    </ul>
+    <div *ngIf="estadoBoss"
+         class="mt-6 p-4 rounded-xl bg-white border-b-4 flex items-center gap-4 animate-pulse"
+         [ngClass]="getEstilo(estadoBoss).border">
 
-    <div *ngIf="estadoBoss">
-      <h3 class="text-lg"> La ulti del Boss es del elemento: {{estadoBoss}}</h3>
+      <div class="text-3xl" [ngClass]="getEstilo(estadoBoss).css">
+        <i class="fas fa-exclamation-triangle"></i>
+      </div>
+
+      <div class="flex-1">
+        <p class="text-xs font-bold text-slate-400 uppercase">Ataque Final del Boss</p>
+        <p class= "font-medium">
+          Elemento: <span class="font-black" [ngClass]="getEstilo(estadoBoss).css">{{estadoBoss |titlecase}}
+          </span>
+        </p>
+      </div>
+      <div class="text-2xl opacity-80" [ngClass]="getEstilo(estadoBoss).css">
+          <i [class]="getEstilo(estadoBoss).icon"></i>
+        </div>
     </div>
 
   </div>
 </div>
+</div>
+
