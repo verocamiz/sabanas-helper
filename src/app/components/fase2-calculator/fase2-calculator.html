@@ -1,8 +1,8 @@
 <!-- src/app/pages/fase2/fase2-calculator.component.html -->
-<h2>Calculadora Fase 2</h2>
+
 
 <div>
-  <label>Estado del tótem:</label>
+  <label>Estado del boss:</label>
   <select [(ngModel)]="estadoPanda">
     <option *ngFor="let e of estados" [value]="e">{{e}}</option>
   </select>
@@ -16,10 +16,10 @@
 </div>
 
 <br>
-<button (click)="calcular()">Calcular</button>
-<hr>
+ <button class="btn btn-primary" (click)="calcular()">Calcular</button>
 
-<div *ngFor="let r of resultados">
+
+<!-- <div *ngFor="let r of resultados">
   <h4>Aliado {{r.aliado}}</h4>
   <p>Estado enemigo: {{r.estadoEnemigo}}</p>
   <p>Estado necesario: {{r.estadoNecesario}}</p>
@@ -29,4 +29,25 @@
 <hr>
 <div *ngIf="estadoBoss">
   <h3>Boss golpe final: {{estadoBoss}}</h3>
+</div> -->
+
+
+<div *ngIf="resultados.length > 0" class="card w-96 bg-base-100 shadow-sm ">
+  <div class="card-body">
+    <div class="flex justify-between">
+      <h2 class="text-xl font-bold">Ubicación por elementos:</h2>
+    </div>
+    <ul class="mt-6 flex flex-col gap-2 text-xs">
+      <li *ngFor="let r of resultados">
+        <i class="fas fa-user mr-2"></i>
+        <span class="text-lg"> Jugador {{r.aliado}}: {{r.totemIdeal}}</span>
+      </li>
+
+    </ul>
+
+    <div *ngIf="estadoBoss">
+      <h3 class="text-lg"> La ulti del Boss es del elemento: {{estadoBoss}}</h3>
+    </div>
+
+  </div>
 </div>
